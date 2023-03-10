@@ -24,9 +24,9 @@ export class MoviesController {
   }
 
   @Get()
-  getMovie(@Query('i') id: string): Promise<ResponseMovieDto> {
+  getMovie(@Query('t') title: string): Promise<ResponseMovieDto> {
     try {
-      const movieData = this.moviesService.requestMovie(id);
+      const movieData = this.moviesService.requestMovie(title);
       return movieData;
     } catch (error) {
       throw new HttpException(

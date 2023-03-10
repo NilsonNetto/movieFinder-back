@@ -26,11 +26,11 @@ export class MoviesService {
     return responseData;
   }
 
-  async requestMovie(id: string): Promise<ResponseMovieDto> {
+  async requestMovie(title: string): Promise<ResponseMovieDto> {
     const apiKey = process.env.OMDB_API_KEY;
     const movieData = (
       await this.httpService.axiosRef.get(
-        `http://www.omdbapi.com/?apikey=${apiKey}&i=${id}&plot=full`,
+        `http://www.omdbapi.com/?apikey=${apiKey}&t=${title}&plot=full`,
       )
     ).data;
     const responseData = new ResponseMovieDto();
